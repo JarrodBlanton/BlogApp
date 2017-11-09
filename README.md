@@ -5,10 +5,10 @@
 * A mapping between HTTP routes and CRUD
 
 ## CRUD
-* CREATE    /addBlog
-* READ      /allBlogs
-* UPDATE    /updateBlog/:id
-* DESTROY   /destroyBlog/:id
+* CREATE  =>  /addBlog
+* READ    =>  /allBlogs
+* UPDATE  =>  /updateBlog/:id
+* DESTROY =>  /destroyBlog/:id
 
 ## RESTful ROUTES
 A table of all 7 RESTful Routes
