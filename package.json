@@ -1,0 +1,32 @@
+{
+  "name": "blogapp",
+  "description": "REST project",
+  "dependencies": {
+    "body-parser": "^1.18.2",
+    "ejs": "^2.5.7",
+    "express": "^4.16.2",
+    "mongoose": "^4.13.1"
+  },
+  "version": "1.0.0",
+  "main": "app.js",
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/JarrodBlanton/BlogApp.git"
+  },
+  "keywords": [
+    "npm",
+    "js",
+    "nodejs",
+    "webdev"
+  ],
+  "author": "Jarrod Blanton",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/JarrodBlanton/BlogApp/issues"
+  },
+  "homepage": "https://github.com/JarrodBlanton/BlogApp#readme"
+}
