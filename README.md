@@ -1,4 +1,4 @@
-# Restful Routing
+# RESTful Routing
 
 ## REST
 * (RE)presentational (S)tate (T)ransfer
