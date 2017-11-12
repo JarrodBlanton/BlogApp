@@ -2,3 +2,7 @@ i.icon {
     /* Increase size of icons */
     font-size: 2em
 }
+
+.container.main {
+    margin-top: 7em;
+}
