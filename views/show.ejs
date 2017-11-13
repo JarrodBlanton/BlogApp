@@ -18,8 +18,12 @@
         <div class="content">
             <span>Date Posted: <%= blog.created.toDateString() %>
         </div>
+       <a href="/blogs/<%= blog._id %>/edit"><button class="ui purple basic button">Edit</button></a>
+        <form action="/blogs/<%= blog._id %>?_method=DELETE"method="POST" >
+            <button class="ui negative basic button">Delete</button>
+        </form>
     </div>
-
+    
 </div>
 
 <% include ./partials/footer %>
