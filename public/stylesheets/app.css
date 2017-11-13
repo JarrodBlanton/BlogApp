@@ -7,6 +7,10 @@ i.icon {
     margin-top: 7em;
 }
 
+i.chevron {
+    margin-top: 10px;
+}
+
 #delete {
     display: inline;
 }

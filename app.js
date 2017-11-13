@@ -4,6 +4,7 @@ var express  = require('express'),
     parser   = require('body-parser'),
     mongoose = require('mongoose');
     override = require('method-override');
+    exprSan   = require('express-sanitizer');
 
 // APP config
 mongoose.connect('mongodb://localhost/restful_blog_app', { useMongoClient: true });
@@ -11,6 +12,7 @@ app.set('view engine', 'ejs');
 app.use(express.static('public')); // For custom style sheet that will be used later
 app.use(parser.urlencoded({extended: true}));
 app.use(override('_method'));
+app.use(exprSan());
 
 // create Blog schema and model for database
 var Blog = mongoose.model('Blog', {
@@ -45,6 +47,7 @@ app.get('/blogs/new', function(req, res) {
 
 // CREATE route 
 app.post('/blogs', function(req, res) {
+    req.body.blog.body = req.sanitize(req.body.blog.body);
     Blog.create(req.body.blog, function(err, blog) {
         // If error, return to new blog form
         if (err) {
@@ -82,6 +85,7 @@ app.get('/blogs/:id/edit', function(req, res) {
 
 // UPDATE route
 app.put('/blogs/:id', function(req, res) {
+    req.body.blog.body = req.sanitize(req.body.blog.body);
     var id = req.params.id;
     Blog.findByIdAndUpdate(id, req.body.blog, function(err, blog) {
         if (err) {
