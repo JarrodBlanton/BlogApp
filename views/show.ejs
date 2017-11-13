@@ -1,0 +1,25 @@
+<% include ./partials/header %>
+
+<div class="ui main text container segment">
+    <div class="ui huge header">
+        <%= blog.title %>
+    </div>
+    <!-- Remove the 'segment' class to remove the surrounding border -->
+    <div class="ui top attached">
+        <div class="item">
+            <img class="ui centered rounded image"src='<%= blog.image %>'>
+        </div>
+        <div class="description">
+            <!-- Changing the %= to %- makes ejs evaluate the code -->
+            <!-- This will result in the user being able to edit their code using html like wordpress -->
+            <!-- However, will need to sanitize inputs so that users cannot inject harmful scripts -->
+            <p><%- blog.body %></p>
+        </div>
+        <div class="content">
+            <span>Date Posted: <%= blog.created.toDateString() %>
+        </div>
+    </div>
+
+</div>
+
+<% include ./partials/footer %>

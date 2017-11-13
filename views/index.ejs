@@ -10,7 +10,13 @@
             <img src="<%= blog.image %>" style="width:30%">
         </div>
         <span> <%= blog.created %> </span>
-        <p><%= blog.body %></p>
+        <!-- Only show the first 100 characters of the blog post -->
+        <% if (blog.body.length <= 100) { %>
+            <p><%= blog.body %></p>
+        <% } else { %>
+            <p><%= blog.body.substring(0, 100) %>. . .</p>
+        <% } %>
+        <a href="/blogs/<%= blog._id %>">Read More</a>
     </div>
 <% }) %>
 </div>

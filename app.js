@@ -1,4 +1,4 @@
-// Initialize things we need
+// Initialize packages
 var express  = require('express'),
     app      = express(),
     parser   = require('body-parser'),
@@ -44,11 +44,25 @@ app.get('/blogs/new', function(req, res) {
 // CREATE route 
 app.post('/blogs', function(req, res) {
     Blog.create(req.body.blog, function(err, blog) {
+        // If error, return to new blog form
         if (err) {
             res.render('new');
-        }
-        else {
+        } else {
             res.redirect('/blogs');
+        }
+    });
+});
+
+// SHOW route
+app.get('/blogs/:id', function(req, res) {
+    // Access id using req.params
+    Blog.findById(req.params.id, function(err, blog) {
+        // If error, return user to blogs page
+        // Otherwise render show page for given id
+        if (err) {
+            res.redirect('/blogs');
+        } else {
+            res.render('show', {blog: blog});
         }
     });
 });
