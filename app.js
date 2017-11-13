@@ -3,12 +3,14 @@ var express  = require('express'),
     app      = express(),
     parser   = require('body-parser'),
     mongoose = require('mongoose');
+    override = require('method-override');
 
 // APP config
 mongoose.connect('mongodb://localhost/restful_blog_app', { useMongoClient: true });
 app.set('view engine', 'ejs');
 app.use(express.static('public')); // For custom style sheet that will be used later
 app.use(parser.urlencoded({extended: true}));
+app.use(override('_method'));
 
 // create Blog schema and model for database
 var Blog = mongoose.model('Blog', {
@@ -63,6 +65,29 @@ app.get('/blogs/:id', function(req, res) {
             res.redirect('/blogs');
         } else {
             res.render('show', {blog: blog});
+        }
+    });
+});
+
+// EDIT route
+app.get('/blogs/:id/edit', function(req, res) {
+    Blog.findById(req.params.id, function(err, blog) {
+        if (err) {
+            res.redirect('/blogs');
+        } else {
+            res.render('edit', {blog: blog});
+        }
+    });
+});
+
+// UPDATE route
+app.put('/blogs/:id', function(req, res) {
+    var id = req.params.id;
+    Blog.findByIdAndUpdate(id, req.body.blog, function(err, blog) {
+        if (err) {
+            res.redirect('/blogs');
+        } else {
+            res.redirect('/blogs/' + id);
         }
     });
 });
